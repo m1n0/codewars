@@ -1,15 +1,12 @@
 // https://www.codewars.com/kata/decode-the-morse-code
 decodeMorse = function(morseCode){
-  var result = '';
-  var words = morseCode.trim().split('   ')
-
-  for (var i = 0; i < words.length; i++) {
-    var letters = words[i].split(' ')
-    for (var j = 0; j < letters.length; j++) {
-      result += MORSE_CODE[letters[j]];
-    }
-    result += " ";
+  function decodeLetter(l) {
+    return MORSE_CODE[l];
   }
 
-  return result.trim();
+  function decodeWord(w) {
+    return w.split(' ').map(decodeLetter).join('')
+  }
+
+  return morseCode.trim().split('   ').map(decodeWord).join(' ');
 }
