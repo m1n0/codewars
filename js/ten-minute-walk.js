@@ -4,10 +4,12 @@ function isValidWalk(walk) {
   var y = 0;
 
   for (var i = 0; i < walk.length; i++) {
-    if (walk[i] == 'n') y += 1
-    if (walk[i] == 's') y += -1
-    if (walk[i] == 'e') x += 1
-    if (walk[i] == 'w') x += -1
+    switch (walk[i]) {
+      case 'n': y++; break
+      case 's': y--; break
+      case 'e': x++; break
+      case 'w': x--; break
+    }
   }
-  return (x == 0 && y == 0 && walk.length == 10) ? true : false;
+  return x == 0 && y == 0 && walk.length == 10
 }
