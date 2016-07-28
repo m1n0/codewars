@@ -1,16 +1,22 @@
 // https://www.codewars.com/kata/calculating-with-functions
-function zero(f) {if (typeof f === 'undefined') return 0; else return eval("0 " + f)}
-function one(f) {if (typeof f === 'undefined') return 1; else return eval("1 " + f)}
-function two(f) {if (typeof f === 'undefined') return 2; else return eval("2 " + f)}
-function three(f) {if (typeof f === 'undefined') return 3; else return eval("3 " + f)}
-function four(f) {if (typeof f === 'undefined') return 4; else return eval("4 " + f)}
-function five(f) {if (typeof f === 'undefined') return 5; else return eval("5 " + f)}
-function six(f) {if (typeof f === 'undefined') return 6; else return eval("6 " + f)}
-function seven(f) {if (typeof f === 'undefined') return 7; else return eval("7 " + f)}
-function eight(f) {if (typeof f === 'undefined') return 8; else return eval("8 " + f)}
-function nine(f) {if (typeof f === 'undefined') return 9; else return eval("9 " + f)}
+var n = function(d) {
+  return function(op) {
+    return op ? op(d) : d
+  }
+}
 
-function plus(n) {return "+ " + n}
-function minus(n) {return "- " + n}
-function times(n) {return "* " + n}
-function dividedBy(n) {return "/ " + n}
+var zero = n(0)
+var one = n(1)
+var two = n(2)
+var three = n(3)
+var four = n(4)
+var five = n(5)
+var six = n(6)
+var seven = n(7)
+var eight = n(8)
+var nine = n(9)
+
+function plus(r) {return function(l) {return l + r}}
+function minus(r) {return function(l) {return l - r}}
+function times(r) {return function(l) {return l * r}}
+function dividedBy(r) {return function(l) {return l / r}}
