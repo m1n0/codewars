@@ -6,3 +6,7 @@ def narcissistic(value):
     for x in valStr:
             total += int(x) ** digits
     return total == value
+
+def narcissisticFunctional(value):
+    power = len(str(value))
+    return value == reduce(lambda x, y : x + y, [int(i) ** power for i in str(value)])
