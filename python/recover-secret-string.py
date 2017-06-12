@@ -9,7 +9,30 @@ triplets = [
   ['w','h','s']
 ]
 
-def recoverSecret(triplets):
+def recoverSecret(triplets: list) -> str:
+    """ Other solutions inspired """
+    out = list(set([char for triplet in triplets for char in triplet]))
+
+    finished = False
+    while not finished:
+        finished = True
+        for triplet in triplets:
+            if out.index(triplet[0]) > out.index(triplet[1]):
+                swap(out, triplet[0], triplet[1])
+                finished = False
+            if out.index(triplet[1]) > out.index(triplet[2]):
+                swap(out, triplet[1], triplet[2])
+                finished = False
+    return ''.join(out)
+
+
+def swap(l: list, a: str, b: str):
+    l.remove(a)
+    l.insert(l.index(b), a)
+
+
+def recoverSecret_traditional(triplets):
+    """ A more traditional iterative approach"""
     out = ''
     for triplet in triplets:
         for c in triplet:
