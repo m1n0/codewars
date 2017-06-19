@@ -17,14 +17,16 @@ def extract_row(row, index_to_pivot):
     out = []
     for i, val in enumerate(row):
         if i != index_to_pivot:
+            res_val = '-'
             try:
-                val = int(val)
+                res_val = int(val)
             except ValueError:
-                try:
-                    val = float(val)
-                except ValueError:
-                    val = '-'
-        out.append(val)
+                pass
+            try:
+                res_val = float(val)
+            except ValueError:
+                pass
+        out.append(res_val)
     return out
 
 
